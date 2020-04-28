@@ -1,0 +1,40 @@
+<div class="container">
+  <form [formGroup]="announcementForm" role="form">
+    <div class="form-group row">
+      <div class="col-lg-11 ml-lg-3 mt-5 alert alert-danger" [hidden]="!error">
+        There was a problem. {{error}}.
+      </div>
+      <div class="col-lg-11 ml-lg-3 alert alert-success" [hidden]="!message">
+        {{message}}
+      </div>
+    </div>
+    <div class="form-group row align-items-center">
+    <div class="col-lg-3  align-self-center text-center">
+      <img src="..." width="250" height="250" class="mx-auto img-fluid img-circle d-block" alt="img">
+      <h6 class="mt-2">Upload a announcement image</h6>
+      <label class="custom-file">
+        <input type="file" id="file" class="custom-file-input">
+        <span class="custom-file-control">Choose file</span>
+      </label>
+    </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-lg-3 col-form-label form-control-label">Title</label>
+      <div class="col-lg-9">
+        <input class="form-control" formControlName="title" type="text" >
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-lg-3 col-form-label form-control-label">Text</label>
+      <div class="col-lg-9">
+        <textarea class="form-control"formControlName="text" id="exampleTextarea" rows="3" style="margin-top: 0px; margin-bottom: 0px; height: 346px;"></textarea>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-lg-9 text-right">
+        <input  type="submit" class="btn btn-primary" (click)="save()"   value="Save Changes">
+        <input  type="submit" class="btn btn-success  ml-1"   (click)="add()" value="Add">
+      </div>
+    </div>
+  </form>
+</div>

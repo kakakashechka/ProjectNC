@@ -1,0 +1,26 @@
+input.ng-invalid.ng-touched {
+  border: 2px solid red;
+}
+input.ng-valid.ng-touched {
+  border: 2px solid green;
+}
+form:before {
+  content: '';
+  height: 100%;
+  left: 0;
+  background-color: rgba(0,0,0,0.9);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+  border-radius: 10px;
+}
+h1{
+  color: white;
+  font-weight: bold;
+
+}
+h3{
+  color:white;
+  font-weight: 300;
+}

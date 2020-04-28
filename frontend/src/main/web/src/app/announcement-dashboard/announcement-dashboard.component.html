@@ -1,0 +1,15 @@
+<section class="min-vh-100" id="cover">
+  <div class="container">
+    <h3 style="color: white;">Top Announcement</h3>
+    <a *ngFor="let announcements of announcement" class="col-lg-4"
+       routerLink="/announcement-edit/{{announcements.id}}">
+      <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+        <div class="card-header"><img src="../../assets/logo_brainduel.png" width="110" height="122"></div>
+        <div class="card-body">
+          <h5 class="card-title">{{announcements.title}}</h5>
+          <p class="card-text">{{announcements.description}}</p>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>

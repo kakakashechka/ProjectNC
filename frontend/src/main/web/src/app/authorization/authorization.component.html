@@ -1,0 +1,39 @@
+
+<section   class="min-vh-100" id="cover">
+  <div class="container">
+      <h1>USER LOGIN</h1>
+      <h3>Welcome to BrainDuel!</h3>
+      <div class="row text-white">
+          <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
+              <img  src="https://img.icons8.com/plasticine/100/000000/user-male-circle.png"/>
+                    <div class="alert alert-danger" [hidden]="!error">
+                      There was a problem logging in. Please try again.
+                    </div>
+              <form [formGroup]="userForm" (ngSubmit)="login()">
+                  <div class="form-group ">
+                      <input type="text" formControlName="username"  class="form-control text-center"  placeholder="USERNAME" required maxlength="20">
+                  </div>
+                  <div class="form-group">
+                      <input type="password" formControlName="password" class="form-control text-center" id="exampleInputPassword1" placeholder="PASSWORD" required maxlength="20">
+                  </div>
+                  <div class="form-group">
+                      <div class="form-check ">
+                        <label class="form-check-label" for="autoSizingCheck2">
+                          <input class="form-check-input" type="checkbox" id="autoSizingCheck2">
+                          Remember me
+                          </label>
+                      </div>
+                  </div>
+                  <button  class="btn btn-secondary btn-lg btn-block" type="submit" [disabled]="!userForm.valid">LOGIN</button>
+              </form>
+              <div class="text-center">
+                  <label style="color: white;" class="btn" >Forgot password?</label>
+                  <a routerLinkActive="active" routerLink="/signup"><label style="color: white;" class="btn" >Sign Up</label></a>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+

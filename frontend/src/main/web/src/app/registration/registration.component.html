@@ -1,0 +1,81 @@
+<section   class="min-vh-100" id="cover">
+  <div class="container">
+    <h1>USER SIGN UP</h1>
+    <h3>for BrainDuel</h3>
+
+    <div class="row text-white">
+      <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+          <div class="col-lg-11 ml-lg-3 mt-5 alert alert-danger" [hidden]="!message">
+            There was a problem. {{message | json}}.
+          </div>
+          <div class="form-group ">
+            <input type="text" formControlName="username"  class="form-control text-center"  placeholder="USERNAME" required maxlength="20">
+          </div>
+          <div class="form-group">
+            <input type="text" formControlName="firstname" class="form-control text-center"  placeholder="FIRST NAME" required maxlength="20">
+          </div>
+          <div class="form-group">
+            <input type="text" formControlName="lastname" class="form-control text-center"  placeholder="LAST NAME" required maxlength="20">
+          </div>
+          <div class="form-group">
+            <input type="email" formControlName="email" class="form-control text-center"  placeholder="EMAIL" required maxlength="20">
+            <div
+              *ngIf="registrationForm.get('email').invalid && registrationForm.get('email').touched"
+              class="validation">
+              <small *ngIf="registrationForm.get('email').errors.required">
+                Email cannot be empty
+              </small>
+              <small *ngIf="registrationForm.get('email').errors.email">
+                Please fill in a valid email address
+              </small>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="password" formControlName="password" class="form-control text-center" id="exampleInputPassword1" placeholder="PASSWORD" required maxlength="20">
+            <div
+              *ngIf="registrationForm.get('password').invalid && registrationForm.get('password').touched"
+              class="validation">
+              <small *ngIf="registrationForm.get('password').errors.required">
+                Password cannot be empty
+              </small>
+              <small *ngIf="registrationForm.get('password').errors.minlength">
+                Password must be at least {{registrationForm.get('password').errors.minlength.requiredLength}} characters long
+              </small>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="password" formControlName="confirmPassword" class="form-control text-center" id="exampleInputPassword2" placeholder="CONFIRM PASSWORD" required maxlength="20">
+            <div
+              *ngIf="registrationForm.get('confirmPassword').invalid && registrationForm.get('confirmPassword').touched"
+              class="validation">
+              <small *ngIf="registrationForm.get('confirmPassword').errors.required">
+                Confirm Password is required
+              </small>
+              <small *ngIf="registrationForm.get('confirmPassword').errors.mustMatch">
+                Passwords must match
+              </small>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-check ">
+              <input class="form-check-input" type="checkbox" formControlName="checkAgreement" required id="autoSizingCheck2">
+              <label class="form-check-label" for="autoSizingCheck2"> I agree to the BrainDuel Terms of Service and policy</label>
+              <div class="validation" *ngIf="registrationForm.get('checkAgreement').invalid">
+                You need to read and accept T & C
+              </div>
+            </div>
+
+          </div>
+            <button  class="btn btn-secondary btn-lg" type="submit" [disabled]="registrationForm.invalid">SIGN UP</button>
+        </form>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+</section>

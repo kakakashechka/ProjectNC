@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
+  <a class="navbar-brand">BrainDuel</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+          aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/home">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/login">Login</a>
+      </li>
+    </ul>
+    <form class="form-inline  mt-2 mt-md-0">
+<!--      <a class="btn bg-secondary btn-sm" routerLink="/quiz-create">Create quiz</a>-->
+      <a *ngIf="authenticated() && ifUser()" class="btn bg-secondary btn-sm" routerLink="/quiz-create">Create quiz</a>
+      <a *ngIf="authenticated()" class="btn bg-secondary btn-sm"  (click)="logout()">Logout</a>
+    </form>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
+
+
+

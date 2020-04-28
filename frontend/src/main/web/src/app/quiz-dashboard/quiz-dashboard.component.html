@@ -1,0 +1,23 @@
+<section class="min-vh-100" id="cover">
+	<div class="container">
+		<h3 style="color: white;">Top Quizes</h3>
+	  <!-- <div class="grid grid-pad">
+	    <a *ngFor="let quiz of quizes" class="col-1-4"
+	       routerLink="/quiz-edit/{{quiz.id}}">
+	      <div class="module hero">
+	        <h4>{{quiz.title}}</h4>
+	      </div>
+	    </a>
+	  </div> -->
+	  <a *ngFor="let quiz of quizes" class="col-lg-4"
+	       routerLink="/quiz-edit/{{quiz.id}}">
+		<div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+		  <div class="card-header"><img src="../../assets/logo_brainduel.png" width="110" height="122"></div>
+		  <div class="card-body">
+		    <h5 class="card-title">{{quiz.title}}</h5>
+		    <p class="card-text">{{quiz.description}}</p>
+		  </div>
+		</div>
+	  </a>
+	</div>
+</section>

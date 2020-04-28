@@ -1,0 +1,211 @@
+<section class="min-vh-100" style="margin-top: 80px;">
+	<link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+	<div class="container">
+		<div class="row my-2">
+			<div class="col-lg-4 order-lg-1 text-center">
+	            <img src="https://img.icons8.com/plasticine/100/000000/user-male-circle.png" width="150" height="150" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+	            <h6 class="mt-2">Upload a different photo</h6>
+	            <label class="custom-file">
+	                <input type="file" id="file" class="custom-file-input">
+	                <span class="custom-file-control">Choose file</span>
+	            </label>
+	        </div>
+			<div class="col-lg-8 order-lg-2">
+				<ul class="nav nav-tabs">
+					<li *ngIf="!editOnly" class="nav-item">
+						<a  data-target="#profile" data-toggle="tab" class="nav-link active show">Profile</a>
+					</li>
+					<li class="nav-item">
+						<a  data-target="#edit" data-toggle="tab" class="nav-link" [class.active]="editOnly">Edit</a>
+					</li>
+				</ul>
+				<div  class="tab-content py-4">
+					<div *ngIf="!editOnly" class="tab-pane active show" id="profile">
+						<h5 class="mb-3">{{user.role.name | uppercase}} PROFILE</h5>
+						<div class="col">
+							<div class="col-md-6">
+								<h6>{{user.username}}</h6>
+								<p>
+
+                                {{user.firstName}}, {{user.lastName}}
+
+								</p>
+								<h6>{{user.email}}</h6>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane" [class.active]="editOnly" id="edit">
+						<form [formGroup]="userForm" role="form">
+							<div class="form-group row">
+								<div class="col-lg-11 ml-lg-3 alert alert-danger" [hidden]="!error">
+									There was a problem. {{error}}.
+								  </div>
+								  <div class="col-lg-11 ml-lg-3 alert alert-success" [hidden]="!message">
+									{{message}}
+								  </div>
+							</div>
+							<div class="form-group row">
+								<label class="col-lg-3 col-form-label form-control-label">First name</label>
+								<div class="col-lg-9">
+									<input class="form-control" formControlName="firstname" type="text" >
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-lg-3 col-form-label form-control-label">Last name</label>
+								<div class="col-lg-9">
+									<input class="form-control" formControlName="lastname" type="text" >
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-lg-3 col-form-label form-control-label">Email</label>
+								<div class="col-lg-9">
+									<input class="form-control" formControlName="email" type="email" >
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-lg-3 col-form-label form-control-label">Username</label>
+								<div class="col-lg-9">
+									<input class="form-control" formControlName="username" type="text" >
+								</div>
+							</div>
+							<div class="form-group row">
+                <label class="col-lg-3 col-form-label form-control-label">Password</label>
+                <div class="col-lg-9">
+                    <input class="form-control" formControlName="password" type="password" >
+                </div>
+              </div>
+              <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">Confirm password</label>
+                  <div class="col-lg-9">
+                      <input class="form-control" type="password" >
+                  </div>
+              </div>
+                <div *ngIf="editOnly && userRole()==='super admin'" class="form-group row">
+                    <div class="form-check">
+						<label class="col-lg-7  form-check-label" for="gridRadios1">
+							Admin
+                      <input class="form-check-input " type="radio" name="gridRadios" id="gridRadios1" value="admin" formControlName="role">
+					</label>
+                    </div>
+                    <div class="form-check">
+						<label class="form-check-label col-lg-7" for="gridRadios2">
+							Moderatot
+                      <input class="form-check-input " type="radio" name="gridRadios" id="gridRadios2" value="moderator" formControlName="role">
+					</label>
+                    </div>
+                </div>
+              <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label"></label>
+                  <div class="col-lg-5">
+                      <input  *ngIf="!editOnly"  type="button" class="btn btn-primary" (click)="update()" value="Save Changes">
+                      <input *ngIf="!editOnly && userRole()==='user'" type="button" class="btn btn-danger" (click)="delete()" value="Delete Account">
+                      <input *ngIf="editOnly" type="submit" class="btn btn-success mt-lg-3" (click)="add()"  value="Add">
+                  </div>
+              </div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<hr>-->
+<!--<div class="container bootstrap snippet">-->
+<!--  <div class="row">-->
+<!--    <div class="col-sm-10"><h1>User name</h1></div>-->
+<!--  </div>-->
+<!--  <div class="row">-->
+<!--    <div class="col-sm-3">&lt;!&ndash;left col&ndash;&gt;-->
+<!--      <div class="text-center">-->
+<!--        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">-->
+<!--        <h6>Upload a different photo...</h6>-->
+<!--        <input type="file" class="text-center center-block file-upload">-->
+<!--      </div><br>-->
+<!--    </div>&lt;!&ndash;/col-3&ndash;&gt;-->
+<!--    <div class="col-sm-9">-->
+<!--          <hr>-->
+<!--          <form class="form" action="##" method="post" id="profileForm">-->
+<!--            <div class="row form-group">-->
+<!--              <div class="col-xs-6">-->
+<!--                <label for="first_name"><h4>First name</h4></label>-->
+<!--                <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">-->
+<!--              </div>-->
+<!--              <div class="col-xs-6">-->
+<!--                <label for="last_name"><h4>Last name</h4></label>-->
+<!--                <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">-->
+<!--              </div>-->
+<!--            </div>-->
+
+<!--            <div class="row">-->
+<!--              <div class="col-xs-6">-->
+<!--                <label for="phone"><h4>Phone</h4></label>-->
+<!--                <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">-->
+<!--              </div>-->
+<!--              <div class="col-xs-6">-->
+<!--                <label for="email"><h4>Email</h4></label>-->
+<!--                <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+
+<!--              <div class="col-xs-6">-->
+<!--                <label for="email"><h4>Location</h4></label>-->
+<!--                <input type="email" class="form-control" id="location" placeholder="somewhere" title="enter a location">-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+
+<!--              <div class="col-xs-6">-->
+<!--                <label for="password"><h4>Password</h4></label>-->
+<!--                <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+
+<!--              <div class="col-xs-6">-->
+<!--                <label for="password2"><h4>Verify</h4></label>-->
+<!--                <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2.">-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--              <div class="col-xs-12">-->
+<!--                <br>-->
+<!--                <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>-->
+<!--                <button class="btn bg-danger btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </form>-->
+
+<!--          <hr>-->
+
+
+<!--  </div>&lt;!&ndash;/col-9&ndash;&gt;-->
+<!--</div>&lt;!&ndash;/row&ndash;&gt;-->

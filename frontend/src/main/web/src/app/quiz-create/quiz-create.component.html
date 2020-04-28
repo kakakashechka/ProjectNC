@@ -1,0 +1,31 @@
+<section class="min-vh-100" id="cover">
+	<link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+	<div class="container">
+		<div class="kr-modal-body">
+			<div class="banner">
+				<div class="title">
+					Create a quiz
+				</div>
+			</div>
+			<div class="form">
+				<div class="quiz-name-wrapper">
+					<div class="quiz-name-input kr2-textfield">
+						<label>1. Name this quiz</label>
+						<input [(ngModel)]="quiz.title" type="text" id="name-input" placeholder="Quiz name" data-qtest="quiz-name-input-field" maxlength="60">
+						<div class="quiz-name-error"><span class="hidden">Please enter a quiz name</span></div>
+					</div>
+				</div>
+				<div class="quiz-name-wrapper">
+					<div class="quiz-name-input kr2-textfield">
+						<label>2. Description</label>
+						<input [(ngModel)]="quiz.description" type="text" id="name-input" placeholder="Quiz description" data-qtest="quiz-name-input-field" maxlength="60">
+					</div>
+				</div>
+			</div>
+			<div class="action-btns-wrapper">
+				<button class="cancel-btn" data-qtest="cancel-create-quiz-btn" (click)="goBack()">Cancel</button>
+        <button class="save-btn" data-qtest="create-quiz-btn" (click)="createQuiz()"><i class="fas fa-spinner kr-anim-spin hidden"></i><span class="">Next</span></button>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,12 @@
+<section   class="min-vh-100" id="cover">
+  <div class="col text-center text-white">
+    <h1>Greeting</h1>
+    <div class="container" [hidden]="!authenticated()">
+      <p>The ID is {{greeting['id']}}</p>
+      <p>The content is {{greeting['content']}}</p>
+    </div>
+    <div [hidden]="authenticated()">
+      <p>Login to see your greeting</p>
+    </div>
+  </div>
+</section>
